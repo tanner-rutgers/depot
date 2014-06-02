@@ -52,4 +52,10 @@ class ProductTest < ActiveSupport::TestCase
     assert !@product.save
   end
 
+  test "product title must be at least 10 characters" do
+    @product.title = "Less char"
+    assert @product.invalid?
+    @product.title = "Equal char"
+    assert @product.valid?
+  end
 end
